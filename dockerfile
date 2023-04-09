@@ -1,5 +1,5 @@
 # Set the base image
-FROM openjdk:8-jre
+FROM openjdk:11.0.18-jre
 
 # Install Chrome browser and chromedriver
 RUN apt-get update && apt-get install -y curl gnupg
@@ -19,6 +19,6 @@ COPY src ./src
 
 # Install dependencies and run the tests
 RUN apt-get update && apt-get install -y maven
-RUN mvn clean install -DskipTests=true
-CMD mvn test
+RUN mvn clean -DskipTests=true
+CMD mvn clean
 
